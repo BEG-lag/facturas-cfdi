@@ -1,6 +1,6 @@
 {
   "name": "facturas-cfdi",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Organiza tus facturas CFDI (XML o ZIP de descarga masiva) en tu navegador, sin subir nada, y señala cuáles podrían ser deducciones personales.",
   "license": "MIT",
