@@ -114,7 +114,7 @@ flowchart LR
 El parseo corre en el hilo principal en lotes pequeños que ceden el control al navegador (DOMParser
 no existe dentro de Web Workers), así que la página no se congela. En pruebas locales, Chromium
 procesó un ZIP con 2,525 XML (2,500 únicos más duplicados) en **unos 0.13 s**; la prueba unitaria
-parsea y analiza el mismo volumen en jsdom en unos 0.35 s.
+parsea y analiza el mismo volumen en jsdom en unos 0.3 s.
 
 ## Reglas de deducción en corto
 

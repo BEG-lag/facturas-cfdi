@@ -115,7 +115,7 @@ flowchart LR
 Parsing runs on the main thread in small batches that yield to the browser (DOMParser is not
 available inside Web Workers), so the page stays responsive. In local runs, Chromium processed a ZIP
 with 2,525 XML files (2,500 unique plus duplicates) in **about 0.13 s**; the unit test parses and
-analyzes the same volume under jsdom in about 0.35 s.
+analyzes the same volume under jsdom in about 0.3 s.
 
 ## Deduction rules in short
 
