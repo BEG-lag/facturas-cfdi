@@ -30,8 +30,14 @@ export function printHtml(a: Analysis, lang: Lang, userRfc: string): string {
   </tbody></table>
 
   <h2>${h(t('summary.byMonth'))}</h2>
-  <table><thead><tr>${a.byMonth.map((x) => `<th class="num">${h(monthLabel(x.month, lang))}</th>`).join('')}</tr></thead>
-  <tbody><tr>${a.byMonth.map((x) => `<td class="num">${m(x.amount)}</td>`).join('')}</tr></tbody></table>
+  ${[a.byMonth.slice(0, 6), a.byMonth.slice(6)]
+    .map(
+      (half) =>
+        `<table><thead><tr>${half.map((x) => `<th class="num">${h(monthLabel(x.month, lang))}</th>`).join('')}</tr></thead><tbody><tr>${half
+          .map((x) => `<td class="num">${m(x.amount)}</td>`)
+          .join('')}</tr></tbody></table>`,
+    )
+    .join('')}
 
   <h2>${h(t('summary.byCategory'))}</h2>
   <table><tbody>${a.byCategory.map((c) => `<tr><td>${h(t(`cat.${c.category}`))}</td><td class="num">${c.count}</td><td class="num">${m(c.amount)}</td></tr>`).join('')}</tbody></table>
