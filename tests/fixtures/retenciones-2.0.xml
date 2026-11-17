@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documento SINTETICO de retenciones: la app lo reconoce y lo omite. Datos ficticios. -->
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/2" Version="2.0" FechaExp="2025-01-31T10:00:00" CveRetenc="16" LugarExpRetenc="06000" NoCertificado="00000000000000000000" Certificado="SINTETICO" Sello="SINTETICO">
+  <retenciones:Emisor RfcE="IIA040805DZ4" NomDenRazSocE="EMPRESA DE PRUEBA" RegimenFiscalE="601"/>
+  <retenciones:Receptor NacionalidadR="Nacional"><retenciones:Nacional RfcR="CACX7605101P8" NomDenRazSocR="PERSONA DE PRUEBA SINTETICA" DomicilioFiscalR="06000"/></retenciones:Receptor>
+  <retenciones:Periodo MesIni="1" MesFin="12" Ejercicio="2025"/>
+  <retenciones:Totales MontoTotOperacion="1000.00" MontoTotGrav="1000.00" MontoTotExent="0.00" MontoTotRet="100.00"/>
+</retenciones:Retenciones>

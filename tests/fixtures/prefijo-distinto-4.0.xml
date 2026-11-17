@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CFDI SINTETICO escrito a mano: namespace por omision (sin prefijo cfdi) y prefijo propio para el timbre. Datos ficticios, RFC de prueba del SAT. -->
+<Comprobante xmlns="http://www.sat.gob.mx/cfd/4" Version="4.0" Fecha="2025-08-20T12:00:00" Sello="SINTETICO" FormaPago="03" NoCertificado="00000000000000000000" Certificado="SINTETICO" SubTotal="3650.00" Moneda="MXN" Total="3650.00" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="06000">
+  <Emisor Rfc="EKU9003173C9" Nombre="ESCUELA DEMO PRIMARIA Y SECUNDARIA" RegimenFiscal="601"/>
+  <Receptor Rfc="CACX7605101P8" Nombre="PERSONA DE PRUEBA SINTETICA" DomicilioFiscalReceptor="06000" RegimenFiscalReceptor="605" UsoCFDI="D10"/>
+  <Conceptos>
+    <Concepto ClaveProdServ="86121501" Cantidad="1" ClaveUnidad="E48" Descripcion="Colegiatura agosto" ValorUnitario="3650.00" Importe="3650.00" ObjetoImp="01">
+      <ComplementoConcepto>
+        <ie:instEducativas xmlns:ie="http://www.sat.gob.mx/iedu" version="1.0" nombreAlumno="ALUMNO SINTETICO UNO" CURP="XAXX150101HDFXXX02" nivelEducativo="Primaria" autRVOE="RVOE-DEMO-001"/>
+      </ComplementoConcepto>
+    </Concepto>
+  </Conceptos>
+  <Complemento>
+    <timbre:TimbreFiscalDigital xmlns:timbre="http://www.sat.gob.mx/TimbreFiscalDigital" Version="1.1" UUID="11111111-2222-4333-8444-555555555555" FechaTimbrado="2025-08-20T12:00:05" RfcProvCertif="XIA190128J61" SelloCFD="SINTETICO" NoCertificadoSAT="00000000000000000000" SelloSAT="SINTETICO"/>
+  </Complemento>
+</Comprobante>
