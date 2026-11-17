@@ -526,6 +526,13 @@ a:hover {
   margin: 0;
 }
 
+.field .btn {
+  white-space: normal;
+  justify-self: start;
+  text-align: start;
+  max-inline-size: 100%;
+}
+
 .field .error {
   font-family: var(--sans);
   font-size: 12.5px;
