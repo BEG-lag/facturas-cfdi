@@ -69,11 +69,15 @@ function round2(value: number): number {
   return Math.round(value * 100) / 100;
 }
 
+/**
+ * Chromium y WebKit insertan un <parsererror> dentro del documento parcialmente leído; Firefox y
+ * jsdom lo devuelven como raíz. En ambos casos el archivo se reporta como mal formado.
+ */
 function isParserError(doc: Document): boolean {
   const root = doc.documentElement;
   if (!root) return true;
   if (root.localName === 'parsererror') return true;
-  return doc.getElementsByTagName('parsererror').length > 0 && root.localName !== 'Comprobante';
+  return doc.getElementsByTagName('parsererror').length > 0;
 }
 
 function parseIedu(concepto: Element): Iedu | null {

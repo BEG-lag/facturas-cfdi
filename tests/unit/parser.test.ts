@@ -182,6 +182,18 @@ describe('parseCfdiXml: errores', () => {
     if (!r.ok) expect(r.error.code).toBe('malformed');
   });
 
+  it('detecta el parsererror que Chromium inserta dentro de un Comprobante truncado', () => {
+    const chromiumLike = {
+      parseFromString: () =>
+        new DOMParser().parseFromString(
+          '<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" Version="4.0" TipoDeComprobante="I"><parsererror xmlns="http://www.w3.org/1999/xhtml">error</parsererror></cfdi:Comprobante>',
+          'application/xml',
+        ),
+    } as unknown as DOMParser;
+    const r = parseCfdiXml('<truncado', 'truncado.xml', chromiumLike);
+    expect(!r.ok && r.error.code).toBe('malformed');
+  });
+
   it('rechaza documentos que no son CFDI', () => {
     const r = parseCfdiXml('<?xml version="1.0"?><nota>hola</nota>', 'nota.xml');
     expect(!r.ok && r.error.code).toBe('not-cfdi');

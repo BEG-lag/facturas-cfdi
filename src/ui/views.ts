@@ -198,6 +198,40 @@ function fileList(items: string[]): string {
   return `<ul>${shown.map((i) => `<li>${h(i)}</li>`).join('')}${more > 0 ? `<li>+${more}</li>` : ''}</ul>`;
 }
 
+function problemNotices(
+  failures: NoticeInput['failures'],
+  issues: NoticeInput['issues'],
+  lang: Lang,
+): string[] {
+  const out: string[] = [];
+  if (failures.length) {
+    out.push(
+      noticeBox(
+        'alert',
+        `<p>${h(t('notice.failures', { count: formatNumber(failures.length, lang) }))}</p><details><summary>${h(t('notice.details'))}</summary>${fileList(
+          failures.map((f) => `${f.fileName}: ${t(`error.${f.code}`, { detail: f.detail })}`),
+        )}</details>`,
+      ),
+    );
+  }
+  if (issues.length) {
+    out.push(
+      noticeBox(
+        'alert',
+        `<p>${h(t('notice.issues', { count: formatNumber(issues.length, lang) }))}</p><details><summary>${h(t('notice.details'))}</summary>${fileList(
+          issues.map((f) => `${f.name}: ${t(`error.${f.code}`)}`),
+        )}</details>`,
+      ),
+    );
+  }
+  return out;
+}
+
+/** Avisos cuando no se pudo leer ningún CFDI (sólo archivos dañados o no soportados). */
+export function emptyNoticesHtml(failures: NoticeInput['failures'], issues: NoticeInput['issues'], lang: Lang): string {
+  return [noticeBox('alert', `<p>${h(t('notice.none'))}</p>`), ...problemNotices(failures, issues, lang)].join('');
+}
+
 export function noticesHtml(n: NoticeInput): string {
   const { analysis: a, lang } = n;
   const out: string[] = [];
@@ -226,26 +260,7 @@ export function noticesHtml(n: NoticeInput): string {
       ),
     );
   }
-  if (n.failures.length) {
-    out.push(
-      noticeBox(
-        'alert',
-        `<p>${h(t('notice.failures', { count: formatNumber(n.failures.length, lang) }))}</p><details><summary>${h(t('notice.details'))}</summary>${fileList(
-          n.failures.map((f) => `${f.fileName}: ${t(`error.${f.code}`, { detail: f.detail })}`),
-        )}</details>`,
-      ),
-    );
-  }
-  if (n.issues.length) {
-    out.push(
-      noticeBox(
-        'alert',
-        `<p>${h(t('notice.issues', { count: formatNumber(n.issues.length, lang) }))}</p><details><summary>${h(t('notice.details'))}</summary>${fileList(
-          n.issues.map((f) => `${f.name}: ${t(`error.${f.code}`)}`),
-        )}</details>`,
-      ),
-    );
-  }
+  out.push(...problemNotices(n.failures, n.issues, lang));
   if (n.userRfc && a.otherRfcCount) {
     out.push(noticeBox('info', `<p>${h(t('notice.otherRfc', { count: a.otherRfcCount, year: a.year }))}</p>`));
   }

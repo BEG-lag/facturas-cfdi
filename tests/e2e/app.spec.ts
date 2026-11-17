@@ -104,6 +104,24 @@ test.describe('flujo principal con datos de ejemplo', () => {
   });
 });
 
+test.describe('archivos con problemas', () => {
+  test('reporta XML truncados, documentos que no son CFDI y archivos no soportados', async ({ page }) => {
+    await page.goto('./');
+    await ready(page, { serviceWorker: false });
+    const truncated = '<?xml version="1.0"?><cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/4" Version="4.0" TipoDeComprobante="I"><cfdi:Emisor Rfc="EKU9003173C9"';
+    await page.locator('#file-input').setInputFiles([
+      { name: 'truncado.xml', mimeType: 'text/xml', buffer: Buffer.from(truncated) },
+      { name: 'nota.xml', mimeType: 'text/xml', buffer: Buffer.from('<?xml version="1.0"?><nota>hola</nota>') },
+      { name: 'foto.png', mimeType: 'image/png', buffer: Buffer.from([0x89, 0x50, 0x4e, 0x47]) },
+    ]);
+    await expect(page.locator('#results')).toBeVisible();
+    await expect(page.locator('#notices')).toContainText('2 archivo(s) no se pudieron leer como CFDI.');
+    await expect(page.locator('#notices')).toContainText('1 archivo(s) se omitieron');
+    await page.locator('#notices details').first().locator('summary').click();
+    await expect(page.locator('#notices')).toContainText('truncado.xml: XML mal formado');
+  });
+});
+
 test.describe('persistencia opcional', () => {
   test('no guarda nada por omisión; guarda sólo si se activa y "Borrar todo" lo elimina', async ({ page }) => {
     await page.goto('./');

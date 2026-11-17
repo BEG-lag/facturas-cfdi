@@ -13,6 +13,7 @@ import { printHtml } from './print.ts';
 import {
   deductionsHtml,
   detailHtml,
+  emptyNoticesHtml,
   noticesHtml,
   pagerHtml,
   shellHtml,
@@ -147,11 +148,17 @@ function recompute(): void {
 /* ------------------------------------------------------------------ render */
 
 function renderAll(): void {
-  const loaded = state.dataset.invoices.length > 0 || state.dataset.failures.length > 0;
+  const loaded = state.dataset.invoices.length > 0 || state.dataset.failures.length > 0 || state.issues.length > 0;
+  const hasData = state.analysis !== null;
   root.classList.toggle('is-loaded', loaded);
   $('results').hidden = !loaded;
   $('choose-label').textContent = loaded ? t('drop.add') : t('drop.choose');
-  if (!state.analysis) return;
+  for (const id of ['settings', 'panel-summary', 'panel-deductions', 'panel-invoices']) $(id).hidden = !hasData;
+  root.querySelector<HTMLElement>('[role="tablist"]')!.hidden = !hasData;
+  if (!hasData) {
+    $('notices').innerHTML = loaded ? emptyNoticesHtml(state.dataset.failures, state.issues, state.settings.lang) : '';
+    return;
+  }
   syncSettingsForm();
   renderNotices();
   renderTabs();
