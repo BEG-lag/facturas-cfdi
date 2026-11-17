@@ -193,9 +193,9 @@ Pulsa **Probar con datos de ejemplo** para generar unas 400 facturas ficticias e
 
 ### Pruebas
 
-- **Vitest** para el parser (4.0, 3.3, namespaces, complementos, errores), el clasificador (cada clave
+- **79 pruebas de Vitest** para el parser (4.0, 3.3, namespaces, complementos, errores), el clasificador (cada clave
   y requisito), los topes, la agregación, los ZIP, el CSV y las traducciones.
-- **Playwright** sobre el build de producción: cero peticiones de red al cargar más de 2,500 archivos,
+- **13 pruebas de Playwright** sobre el build de producción: cero peticiones de red al cargar más de 2,500 archivos,
   la CSP bloquea `fetch`, modo sin conexión, guardado opcional y borrado, exportaciones, resumen
   imprimible, navegación con teclado, revisión axe WCAG 2.1 A/AA y sin desplazamiento horizontal a
   375 px.

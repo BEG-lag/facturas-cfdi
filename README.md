@@ -194,9 +194,9 @@ invoices in your browser.
 
 ### Tests
 
-- **Vitest** unit tests for the parser (4.0, 3.3, namespaces, complements, errors), the classifier
+- **79 Vitest** unit tests for the parser (4.0, 3.3, namespaces, complements, errors), the classifier
   (every key and requirement), the caps, aggregation, ZIP handling, CSV and i18n.
-- **Playwright** end-to-end tests on the production build: zero network requests while loading 2,500+
+- **13 Playwright** end-to-end tests on the production build: zero network requests while loading 2,500+
   files, CSP blocks `fetch`, offline mode, opt-in storage and delete, exports, printable summary,
   keyboard navigation, axe WCAG 2.1 A/AA checks and no horizontal scroll at 375 px.
 - Test data is **synthetic only**: SAT test RFCs (for example EKU9003173C9, CACX7605101P8), the generic
