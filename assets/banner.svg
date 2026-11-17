@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-labelledby="t d">
+  <title id="t">facturas-cfdi</title>
+  <desc id="d">Banner animado: archivos XML entran a una ventana del navegador y se ordenan en barras por mes. Nada sale del dispositivo.</desc>
+  <style>
+    .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; }
+    .serif { font-family: 'Cormorant Garamond', 'Iowan Old Style', Georgia, 'Times New Roman', serif; font-style: italic; }
+    .sans { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; }
+    .bar { transform-box: fill-box; transform-origin: 50% 100%; animation: grow 7s cubic-bezier(.2,.8,.2,1) infinite; }
+    .doc { animation: drift 7s ease-in-out infinite; opacity: 0; }
+    .chip { animation: pop 7s ease-out infinite; opacity: 0; }
+    .blink { animation: blink 1.1s steps(1) infinite; }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes grow { 0%, 12% { transform: scaleY(0.04); } 38%, 88% { transform: scaleY(1); } 100% { transform: scaleY(0.04); } }
+    @keyframes drift { 0% { opacity: 0; transform: translate(150px, 0); } 8% { opacity: 1; } 24% { opacity: 1; transform: translate(0, 0); } 32%, 100% { opacity: 0; transform: translate(-40px, 0); } }
+    @keyframes pop { 0%, 40% { opacity: 0; transform: translateY(8px); } 50%, 88% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) {
+      .bar, .doc, .chip, .blink, .pulse { animation: none; }
+      .doc { opacity: 0; }
+      .chip { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#eceee6" stroke-opacity=".05"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0c10" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0c10"/>
+    </linearGradient>
+    <linearGradient id="barg" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#cfff45" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#cfff45"/>
+    </linearGradient>
+    <g id="xml">
+      <path d="M0 0h34l12 12v44a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4Z" fill="#191d27" stroke="#eceee6" stroke-opacity=".5"/>
+      <path d="M34 0v12h12" fill="none" stroke="#eceee6" stroke-opacity=".5"/>
+      <text x="23" y="42" text-anchor="middle" class="mono" font-size="11" font-weight="700" fill="#7fd8ff">XML</text>
+    </g>
+  </defs>
+
+  <rect width="1280" height="360" fill="#0a0c10"/>
+  <rect width="1280" height="360" fill="url(#grid)"/>
+  <rect y="220" width="1280" height="140" fill="url(#fade)"/>
+
+  <!-- Texto -->
+  <text x="64" y="86" class="mono" font-size="15" letter-spacing="2.4" fill="#cfff45">CFDI 4.0 · 3.3 · XML · ZIP</text>
+  <text x="62" y="160" class="mono" font-size="66" font-weight="700" letter-spacing="-2.5" fill="#eceee6">facturas<tspan fill="#cfff45">-cfdi</tspan><tspan class="blink" fill="#cfff45">_</tspan></text>
+  <text x="64" y="214" class="serif" font-size="38" fill="#cfff45">ordena tus facturas sin subirlas</text>
+  <text x="64" y="262" class="sans" font-size="18" fill="#eceee6" fill-opacity=".82">Gasto por mes, emisor y categoría · posibles deducciones personales</text>
+
+  <g transform="translate(64 296)">
+    <rect width="150" height="32" rx="16" fill="none" stroke="#eceee6" stroke-opacity=".28"/>
+    <circle cx="20" cy="16" r="4" fill="#cfff45" class="pulse"/>
+    <text x="34" y="21" class="mono" font-size="13" fill="#eceee6">100% local</text>
+    <rect x="162" width="126" height="32" rx="16" fill="none" stroke="#eceee6" stroke-opacity=".28"/>
+    <circle cx="182" cy="16" r="4" fill="#cfff45"/>
+    <text x="196" y="21" class="mono" font-size="13" fill="#eceee6">0 envíos</text>
+    <rect x="300" width="190" height="32" rx="16" fill="none" stroke="#eceee6" stroke-opacity=".28"/>
+    <circle cx="320" cy="16" r="4" fill="#cfff45"/>
+    <text x="334" y="21" class="mono" font-size="13" fill="#eceee6">sin conexión</text>
+  </g>
+
+  <!-- Ventana del navegador -->
+  <g transform="translate(800 52)">
+    <rect width="420" height="266" rx="16" fill="#11141b" stroke="#eceee6" stroke-opacity=".18"/>
+    <path d="M0 16a16 16 0 0 1 16-16h388a16 16 0 0 1 16 16v20H0Z" fill="#191d27"/>
+    <circle cx="20" cy="18" r="5" fill="#ff5d47"/>
+    <circle cx="38" cy="18" r="5" fill="#ffb648"/>
+    <circle cx="56" cy="18" r="5" fill="#cfff45"/>
+    <g transform="translate(330 8)">
+      <rect x="0" y="9" width="16" height="11" rx="2" fill="none" stroke="#cfff45" stroke-width="1.8"/>
+      <path d="M3.5 9V6.5a4.5 4.5 0 0 1 9 0V9" fill="none" stroke="#cfff45" stroke-width="1.8"/>
+      <text x="24" y="19" class="mono" font-size="11" fill="#969dab">local</text>
+    </g>
+    <text x="24" y="68" class="mono" font-size="13" fill="#969dab">gasto por mes</text>
+    <text x="396" y="68" text-anchor="end" class="serif" font-size="18" fill="#eceee6" fill-opacity=".8">2025</text>
+    <g transform="translate(24 214)">
+      <line x1="0" y1="0" x2="372" y2="0" stroke="#eceee6" stroke-opacity=".25"/>
+      <rect class="bar" x="0"   y="-62"  width="24" height="62"  rx="3" fill="url(#barg)" style="animation-delay:0s"/>
+      <rect class="bar" x="31"  y="-90"  width="24" height="90"  rx="3" fill="url(#barg)" style="animation-delay:.08s"/>
+      <rect class="bar" x="62"  y="-84"  width="24" height="84"  rx="3" fill="url(#barg)" style="animation-delay:.16s"/>
+      <rect class="bar" x="93"  y="-58"  width="24" height="58"  rx="3" fill="url(#barg)" style="animation-delay:.24s"/>
+      <rect class="bar" x="124" y="-104" width="24" height="104" rx="3" fill="url(#barg)" style="animation-delay:.32s"/>
+      <rect class="bar" x="155" y="-92"  width="24" height="92"  rx="3" fill="url(#barg)" style="animation-delay:.40s"/>
+      <rect class="bar" x="186" y="-76"  width="24" height="76"  rx="3" fill="url(#barg)" style="animation-delay:.48s"/>
+      <rect class="bar" x="217" y="-122" width="24" height="122" rx="3" fill="url(#barg)" style="animation-delay:.56s"/>
+      <rect class="bar" x="248" y="-50"  width="24" height="50"  rx="3" fill="url(#barg)" style="animation-delay:.64s"/>
+      <rect class="bar" x="279" y="-110" width="24" height="110" rx="3" fill="url(#barg)" style="animation-delay:.72s"/>
+      <rect class="bar" x="310" y="-70"  width="24" height="70"  rx="3" fill="url(#barg)" style="animation-delay:.80s"/>
+      <rect class="bar" x="341" y="-40"  width="24" height="40"  rx="3" fill="url(#barg)" style="animation-delay:.88s"/>
+    </g>
+    <g transform="translate(24 228)">
+      <g class="chip">
+        <rect width="214" height="26" rx="13" fill="#11141b" stroke="#cfff45"/>
+        <path d="M12 13.5l4 4 7-8" fill="none" stroke="#cfff45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="30" y="17.5" class="mono" font-size="11.5" font-weight="700" fill="#cfff45">posiblemente deducible</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- XML que entran al navegador -->
+  <g transform="translate(1110 120)"><g class="doc" style="animation-delay:0s"><use href="#xml"/></g></g>
+  <g transform="translate(1150 190)"><g class="doc" style="animation-delay:.6s"><use href="#xml"/></g></g>
+  <g transform="translate(1100 250)"><g class="doc" style="animation-delay:1.2s"><use href="#xml"/></g></g>
+</svg>
