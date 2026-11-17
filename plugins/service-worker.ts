@@ -48,11 +48,13 @@ self.addEventListener('fetch', (event) => {
           if (response.ok) caches.open(CACHE).then((cache) => cache.put('./index.html', copy));
           return response;
         })
-        .catch(() => caches.match('./index.html').then((cached) => cached || Response.error())),
+        .catch(() => caches.match('./index.html', { ignoreVary: true }).then((cached) => cached || Response.error())),
     );
     return;
   }
-  event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));
+  // ignoreVary: algunos servidores responden con "Vary: Origin" y los scripts de módulo
+  // envían Origin; los archivos son estáticos y del mismo origen, así que es seguro ignorarlo.
+  event.respondWith(caches.match(request, { ignoreVary: true }).then((cached) => cached || fetch(request)));
 });
 `;
 }
