@@ -638,7 +638,7 @@ export function detailHtml(row: Row, lang: Lang, payments: AppliedPayment[], byU
         ${kv(t('detail.serieFolio'), h([i.serie, i.folio].filter(Boolean).join(' ') || '-'))}
         ${kv(t('detail.payment'), h(describe(FORMA_PAGO, i.formaPago, lang)))}
         ${kv(t('detail.method'), h(describe(METODO_PAGO, i.metodoPago, lang)))}
-        ${kv(t('detail.currency'), h(i.moneda === 'MXN' ? 'MXN' : `${i.moneda} · TC ${i.tipoCambio}`))}
+        ${kv(t('detail.currency'), h(i.moneda === 'MXN' || i.moneda === 'XXX' ? i.moneda : `${i.moneda} · TC ${i.tipoCambio}`))}
         ${kv(t('detail.subtotal'), h(formatMoney(i.subTotal, lang, i.moneda)))}
         ${kv(t('detail.discount'), h(formatMoney(i.descuento, lang, i.moneda)))}
         ${kv(t('detail.taxes'), h(formatMoney(i.totalTrasladados, lang, i.moneda)))}

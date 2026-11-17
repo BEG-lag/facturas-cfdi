@@ -82,6 +82,8 @@ export function dominantClave(invoice: Invoice): string {
 }
 
 export function categorize(invoice: Invoice): CategoryId {
+  // Pagos, nómina y traslados no son gasto: no se clasifican por producto.
+  if (invoice.tipo === 'P' || invoice.tipo === 'N' || invoice.tipo === 'T') return 'otros';
   const byUso = BY_USO[invoice.receptor.usoCfdi];
   if (byUso) return byUso;
   const clave = dominantClave(invoice);

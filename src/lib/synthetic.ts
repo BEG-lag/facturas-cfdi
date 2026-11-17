@@ -662,7 +662,7 @@ const TEMPLATES: { weight: number; make: Template }[] = [
         formaPago: '03',
         emisor: DEMO_ISSUERS.financiera,
         receptor: receptor(c, 'D07'),
-        conceptos: [{ clave: '84131602', descripcion: 'Prima de seguro de gastos médicos mayores', importe: c.pickAmount(9000, 21000) }],
+        conceptos: [{ clave: '84131602', descripcion: 'Prima de seguro de gastos médicos mayores', importe: c.pickAmount(2500, 6500) }],
       },
     ],
   },
