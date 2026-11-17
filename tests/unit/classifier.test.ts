@@ -212,6 +212,21 @@ describe('clasificador: reglas por clave', () => {
     expect(r.reasons.find((x) => x.code === 'medicines')?.rule).toBe('rlisr-264');
   });
 
+  it('D01 de hospital con medicinas incluidas: posible (RLISR 264)', () => {
+    const r = run([
+      invoiceFrom(
+        spec({
+          conceptos: [
+            { clave: '85101501', descripcion: 'Servicios hospitalarios', importe: 9000 },
+            { clave: '51101500', descripcion: 'Medicamentos suministrados', importe: 800 },
+          ],
+        }),
+      ),
+    ]);
+    expect(r.status).toBe('likely');
+    expect(codes(r)).toContain('medicines-hospital');
+  });
+
   it('D01 con lentes: requiere revisión por el tope de $2,500 por persona', () => {
     const r = run([invoiceFrom(spec({ conceptos: [{ clave: '42142913', descripcion: 'Lentes graduados', importe: 3000 }] }))]);
     expect(codes(r)).toContain('lenses');
