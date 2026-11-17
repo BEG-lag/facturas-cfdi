@@ -499,7 +499,7 @@ const TEMPLATES: { weight: number; make: Template }[] = [
         formaPago: '04',
         emisor: DEMO_ISSUERS.tecnologia,
         receptor: receptor(c, c.rand() < 0.5 ? 'I04' : 'G03'),
-        conceptos: [{ clave: '43211503', descripcion: 'Computadora portátil', importe: c.pickAmount(1500, 22000), iva: true }],
+        conceptos: [{ clave: '43211503', descripcion: 'Equipo de cómputo y accesorios', importe: c.pickAmount(600, 9000), iva: true }],
       },
     ],
   },
@@ -633,7 +633,7 @@ const TEMPLATES: { weight: number; make: Template }[] = [
         emisor: DEMO_ISSUERS.hospital,
         receptor: receptor(c, 'D01'),
         conceptos: [
-          { clave: '85101501', descripcion: 'Servicios hospitalarios', importe: c.pickAmount(6000, 48000) },
+          { clave: '85101501', descripcion: 'Servicios hospitalarios', importe: c.pickAmount(4000, 26000) },
           { clave: '51101500', descripcion: 'Medicamentos suministrados durante la hospitalización', importe: c.pickAmount(400, 3500) },
         ],
       };

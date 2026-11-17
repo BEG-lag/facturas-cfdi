@@ -236,7 +236,13 @@ export function classify(invoice: Invoice, ctx: ClassifyContext): DeductionResul
   switch (key) {
     case 'D01': {
       if (invoice.conceptos.some((c) => c.claveProdServ.startsWith('51'))) {
-        reasons.push({ code: 'medicines', level: 'review', rule: 'rlisr-264' });
+        // Las medicinas sólo cuentan si las incluye la factura de la institución hospitalaria (RLISR 264).
+        const withServices = invoice.conceptos.some((c) => c.claveProdServ.startsWith('85'));
+        reasons.push(
+          withServices
+            ? { code: 'medicines-hospital', level: 'info', rule: 'rlisr-264' }
+            : { code: 'medicines', level: 'review', rule: 'rlisr-264' },
+        );
       }
       if (invoice.conceptos.some((c) => c.claveProdServ.startsWith('421429') || LENTES.test(c.descripcion))) {
         reasons.push({ code: 'lenses', level: 'review', params: { limit: LENTES_LIMIT }, rule: 'rlisr-264' });

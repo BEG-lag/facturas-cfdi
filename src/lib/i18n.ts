@@ -216,6 +216,7 @@ const es: Dict = {
   'footer.rules': 'Reglas y fuentes oficiales',
   'footer.code': 'Código fuente',
   'footer.author': 'Hecho por Benjamín Esponda García',
+  'footer.role': 'abogado que construye con IA',
   'footer.license': 'Licencia MIT',
   'footer.synthetic': 'Los datos de ejemplo son ficticios y usan RFC de prueba del SAT.',
 
@@ -282,6 +283,7 @@ const es: Dict = {
   'r.forma-not-listed': 'Forma de pago {forma}: no es cheque nominativo, transferencia ni tarjeta.',
   'r.regime-not-allowed': 'El régimen del receptor ({regimen}) no admite claves de deducción personal en el catálogo c_UsoCFDI.',
   'r.medicines': 'Incluye medicinas: sólo cuentan si vienen en la factura del hospital (no las de farmacia).',
+  'r.medicines-hospital': 'Incluye medicinas junto con servicios médicos u hospitalarios; cuentan si las factura la institución hospitalaria.',
   'r.lenses': 'Lentes ópticos: tope de {limit} por persona al año y deben describirse o tener diagnóstico.',
   'r.beneficiaries':
     'Cuenta si el gasto es tuyo, de tu cónyuge o concubino, o de tus padres, abuelos, hijos o nietos sin ingresos de 1 UMA anual o más.',
@@ -521,6 +523,7 @@ const en: Dict = {
   'footer.rules': 'Rules and official sources',
   'footer.code': 'Source code',
   'footer.author': 'Made by Benjamín Esponda García',
+  'footer.role': 'a lawyer who builds with AI',
   'footer.license': 'MIT License',
   'footer.synthetic': 'Sample data is fictitious and uses SAT test RFCs.',
 
@@ -586,6 +589,7 @@ const en: Dict = {
   'r.forma-not-listed': 'Payment form {forma}: not a nominative check, transfer or card.',
   'r.regime-not-allowed': 'The receiver regime ({regimen}) does not allow personal deduction keys in the c_UsoCFDI catalog.',
   'r.medicines': 'Includes medicines: they only count when billed by the hospital (not pharmacy purchases).',
+  'r.medicines-hospital': 'Includes medicines together with medical or hospital services; they count when billed by the hospital.',
   'r.lenses': 'Prescription lenses: cap of {limit} per person per year, and they must be described or prescribed.',
   'r.beneficiaries':
     'Counts if the expense is yours, your spouse’s or partner’s, or your parents’, grandparents’, children’s or grandchildren’s with income under 1 annual UMA.',
