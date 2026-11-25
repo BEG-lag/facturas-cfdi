@@ -1,4 +1,8 @@
 <p align="center">
+  <a href="https://pivotek.mx"><img src="assets/pivotek-logo.svg" alt="PIVOTEK" width="200"></a>
+</p>
+
+<p align="center">
   <img src="assets/banner.svg" alt="facturas-cfdi: archivos XML entran a una ventana del navegador y se ordenan en barras por mes, sin salir del dispositivo" width="100%">
 </p>
 
