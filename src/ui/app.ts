@@ -684,7 +684,16 @@ function mount(): void {
   setLang(state.settings.lang);
   document.documentElement.lang = state.settings.lang === 'es' ? 'es-MX' : 'en';
   document.title = state.settings.lang === 'es' ? 'facturas-cfdi · Ordena tus facturas CFDI sin subirlas' : 'facturas-cfdi · Sort your CFDI invoices without uploading them';
-  root.innerHTML = shellHtml(state.settings.lang);
+  // El logo de PIVOTEK no cambia con el idioma: al volver a montar se conserva el mismo nodo para que
+  // sus imágenes no se pidan otra vez. El <template> es inerte, así que las <img> de la copia nueva
+  // nunca cargan: se vacía antes de insertarla y en su lugar se pone el logo que ya estaba.
+  const shell = document.createElement('template');
+  shell.innerHTML = shellHtml(state.settings.lang);
+  const pvk = root.querySelector('.pvk');
+  const slot = pvk ? shell.content.querySelector('.pvk') : null;
+  slot?.replaceChildren();
+  root.replaceChildren(shell.content);
+  if (pvk && slot) slot.replaceWith(pvk);
   bindEvents();
   renderAll();
 }
